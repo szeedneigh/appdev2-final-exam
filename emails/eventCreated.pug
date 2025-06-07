@@ -1,0 +1,70 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .container {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+      }
+      .header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px 5px 0 0;
+      }
+      .content {
+        padding: 20px;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+        color: #777;
+      }
+      h1, h2 {
+        color: #4CAF50;
+      }
+      .event-details {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+      }
+  body
+    .container
+      .header
+        h1 Event Confirmation
+      .content
+        p Hi #{name},
+        p Your event has been successfully created!
+        
+        .event-details
+          h2 Event Details:
+          p 
+            strong Title: 
+            | #{event.title}
+          p 
+            strong Date: 
+            | #{new Date(event.date).toLocaleDateString()}
+          p 
+            strong Location: 
+            | #{event.location}
+          p 
+            strong Description: 
+            | #{event.description}
+          
+        p Thank you for using our Event Management System.
+        
+      .footer
+        p This is an automated message, please do not reply to this email. 
