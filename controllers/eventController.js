@@ -1,4 +1,5 @@
 const Event = require('../models/Event');
+const { sendEmail } = require('../config/nodemailer');
 
 // Get all events (public access)
 exports.getAllEvents = async (req, res) => {
@@ -26,6 +27,17 @@ exports.createEvent = async (req, res) => {
     req.body.userId = req.user._id;
     
     const event = await Event.create(req.body);
+    
+    // Send confirmation email
+    await sendEmail({
+      email: req.user.email,
+      subject: 'Event Created Successfully',
+      template: 'eventCreated.pug',
+      data: {
+        name: req.user.name,
+        event
+      }
+    });
     
     res.status(201).json({
       success: true,
